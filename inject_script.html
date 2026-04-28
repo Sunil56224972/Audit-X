@@ -1,0 +1,111 @@
+<script>
+// Audit-X Drag and Drop Logic
+document.addEventListener('DOMContentLoaded', () => {
+  const body = document.body;
+  const heroTitle = document.querySelector('[data-hero="title"]');
+  const heroTagline = document.querySelector('[data-hero="tagline"]');
+  
+  // Create drop overlay
+  const overlay = document.createElement('div');
+  overlay.style.position = 'fixed';
+  overlay.style.inset = '0';
+  overlay.style.backgroundColor = 'rgba(11, 21, 16, 0.9)';
+  overlay.style.zIndex = '9999';
+  overlay.style.display = 'none';
+  overlay.style.alignItems = 'center';
+  overlay.style.justifyContent = 'center';
+  overlay.style.border = '4px dashed var(--color-gold)';
+  
+  const overlayText = document.createElement('h2');
+  overlayText.className = 'font-pixel text-2xl md:text-4xl text-[var(--color-cream)]';
+  overlayText.textContent = 'DROP PACKAGE.JSON HERE';
+  overlay.appendChild(overlayText);
+  body.appendChild(overlay);
+
+  let dragCounter = 0;
+
+  body.addEventListener('dragenter', (e) => {
+    e.preventDefault();
+    dragCounter++;
+    overlay.style.display = 'flex';
+  });
+
+  body.addEventListener('dragleave', (e) => {
+    e.preventDefault();
+    dragCounter--;
+    if (dragCounter === 0) {
+      overlay.style.display = 'none';
+    }
+  });
+
+  body.addEventListener('dragover', (e) => {
+    e.preventDefault();
+  });
+
+  body.addEventListener('drop', (e) => {
+    e.preventDefault();
+    dragCounter = 0;
+    overlay.style.display = 'none';
+
+    if (e.dataTransfer.items) {
+      for (let i = 0; i < e.dataTransfer.items.length; i++) {
+        if (e.dataTransfer.items[i].kind === 'file') {
+          const file = e.dataTransfer.items[i].getAsFile();
+          if (file.name === 'package.json' || file.type === 'application/json') {
+            const reader = new FileReader();
+            reader.onload = function(event) {
+              try {
+                const pkg = JSON.parse(event.target.result);
+                analyzePackage(pkg);
+              } catch (err) {
+                alert('Invalid JSON file.');
+              }
+            };
+            reader.readAsText(file);
+            break;
+          } else {
+             alert('Please drop a package.json file.');
+          }
+        }
+      }
+    }
+  });
+
+  function analyzePackage(pkg) {
+    const name = pkg.name || 'Unknown Project';
+    const deps = Object.keys(pkg.dependencies || {}).length;
+    const devDeps = Object.keys(pkg.devDependencies || {}).length;
+    const totalDeps = deps + devDeps;
+    
+    let healthScore = 100 - (totalDeps * 0.5);
+    if (healthScore < 10) healthScore = 10;
+    
+    // Update Hero
+    heroTitle.innerHTML = `<span class="inline-block whitespace-nowrap">${name.toUpperCase()}</span><br><span class="inline-block whitespace-nowrap text-[var(--color-gold)]">Health: ${Math.floor(healthScore)}%</span>`;
+    
+    heroTagline.textContent = `Analyzed ${totalDeps} dependencies instantly.`;
+    
+    // Update Counters
+    const counters = document.querySelectorAll('[data-counter-target]');
+    if (counters.length >= 4) {
+       // Dep bloat
+       counters[0].textContent = totalDeps;
+       // Unit tests
+       const scripts = pkg.scripts || {};
+       const hasTest = scripts.test && scripts.test.indexOf('no test specified') === -1 ? 1 : 0;
+       counters[1].textContent = hasTest ? '1' : '0';
+       // Exec lag mock
+       counters[2].textContent = Math.floor(Math.random() * 50) + 10 + 'ms';
+       // Vulns mock
+       counters[3].textContent = Math.floor(totalDeps * 0.1) + '+';
+    }
+    
+    // Switch elf sprite to smiling since we audited!
+    const elf = document.querySelector('[data-portrait-toggle]');
+    if (elf && !elf.classList.contains('is-smiling')) {
+        elf.click();
+    }
+  }
+});
+</script>
+</body>
