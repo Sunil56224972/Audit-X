@@ -16,17 +16,46 @@ Designed and Developed by **Sunil Yogi** (UI/UX Designer & Developer).
 
 ## 📸 Gallery
 
-<div align="center">
-  <img src="screenshots/screenshot-1.png" alt="Audit-X Screenshot 1" width="800"/>
-  <br/><br/>
-  <img src="screenshots/screenshot-2.png" alt="Audit-X Screenshot 2" width="800"/>
-  <br/><br/>
-  <img src="screenshots/screenshot-3.png" alt="Audit-X Screenshot 3" width="800"/>
-  <br/><br/>
-  <img src="screenshots/screenshot-4.png" alt="Audit-X Screenshot 4" width="800"/>
-  <br/><br/>
-  <img src="screenshots/screenshot-5.png" alt="Audit-X Screenshot 5" width="800"/>
-</div>
+<details>
+  <summary><b>Landing Page & Hero Section</b></summary>
+  <br/>
+  <div align="center">
+    <img src="screenshots/screenshot-1.png" alt="Landing Page" width="800"/>
+  </div>
+</details>
+
+<details>
+  <summary><b>Package.json Analysis Dashboard</b></summary>
+  <br/>
+  <div align="center">
+    <img src="screenshots/screenshot-2.png" alt="Analysis Dashboard" width="800"/>
+  </div>
+</details>
+
+<details>
+  <summary><b>Audit-X AI Copilot</b></summary>
+  <br/>
+  <div align="center">
+    <img src="screenshots/screenshot-3.png" alt="AI Copilot" width="800"/>
+  </div>
+</details>
+
+<details>
+  <summary><b>Refactoring Actions & Features</b></summary>
+  <br/>
+  <div align="center">
+    <img src="screenshots/screenshot-4.png" alt="Refactoring Actions" width="800"/>
+  </div>
+</details>
+
+<details>
+  <summary><b>Technical Debt Overview</b></summary>
+  <br/>
+  <div align="center">
+    <img src="screenshots/screenshot-5.png" alt="Technical Debt Overview" width="800"/>
+  </div>
+</details>
+
 
 
 ## 🚀 Quick Start
