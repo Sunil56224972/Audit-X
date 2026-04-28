@@ -6,6 +6,13 @@ Designed and Developed by **Sunil Yogi** (UI/UX Designer & Developer).
 
 ---
 
+## 🌐 Live Demo
+
+You can experience the interactive platform here:  
+👉 **[View Audit-X Live](https://eclectic-marzipan-43bc95.netlify.app/)**
+
+---
+
 ## ✨ Features
 
 - **Drag & Drop Analysis:** Drop any valid `package.json` directly into the browser.
