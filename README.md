@@ -14,6 +14,21 @@ Designed and Developed by **Sunil Yogi** (UI/UX Designer & Developer).
 - **Interactive Storyboarding:** Features animated character sprites (like the Audit-X Elf) that react to your codebase's health score.
 - **AI Copilot Integration:** A built-in, context-aware Gemini AI Assistant (`gemini-2.5-flash`) that guides users through the auditing process and provides sarcastic, witty feedback on technical debt.
 
+## 📸 Gallery
+
+<div align="center">
+  <img src="screenshots/screenshot-1.png" alt="Audit-X Screenshot 1" width="800"/>
+  <br/><br/>
+  <img src="screenshots/screenshot-2.png" alt="Audit-X Screenshot 2" width="800"/>
+  <br/><br/>
+  <img src="screenshots/screenshot-3.png" alt="Audit-X Screenshot 3" width="800"/>
+  <br/><br/>
+  <img src="screenshots/screenshot-4.png" alt="Audit-X Screenshot 4" width="800"/>
+  <br/><br/>
+  <img src="screenshots/screenshot-5.png" alt="Audit-X Screenshot 5" width="800"/>
+</div>
+
+
 ## 🚀 Quick Start
 
 1. **Clone the repository:**
