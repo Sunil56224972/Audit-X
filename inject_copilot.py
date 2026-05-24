@@ -40,7 +40,7 @@ copilot_html = '''
   const inputField = document.getElementById('copilot-input');
   const sendBtn = document.getElementById('copilot-send');
   
-  const apiKey = 'AIzaSyDaWf1fg_jPd90vaZZioxora_5ljTP2LsY';
+  const apiKey = import.meta.env.VITE_GROQ_API_KEY;
 
   let chatHistory = [];
   const systemInstruction = {
@@ -91,22 +91,33 @@ copilot_html = '''
     chatHistory.push({ role: "user", parts: [{ text }] });
 
     try {
-      const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {
+      const groqMessages = [
+        { role: 'system', content: systemInstruction.parts[0].text },
+        ...chatHistory.map(msg => ({ role: msg.role === 'model' ? 'assistant' : 'user', content: msg.parts[0].text }))
+      ];
+
+      const res = await fetch(`https://api.groq.com/openai/v1/chat/completions`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ systemInstruction, contents: chatHistory })
+        headers: { 
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${apiKey}`
+        },
+        body: JSON.stringify({ 
+          model: 'llama3-8b-8192',
+          messages: groqMessages
+        })
       });
       const data = await res.json();
       
       const loadEl = document.getElementById(loadingId);
       if(loadEl) loadEl.remove();
 
-      if (data.candidates && data.candidates[0].content) {
-        const reply = data.candidates[0].content.parts[0].text;
+      if (data.choices && data.choices[0].message) {
+        const reply = data.choices[0].message.content;
         chatHistory.push({ role: "model", parts: [{ text: reply }] });
         appendMessage(reply, 'model');
       } else {
-        appendMessage('Error: No response from Gemini.', 'model');
+        appendMessage('Error: No response from Groq.', 'model');
       }
     } catch (err) {
       const loadEl = document.getElementById(loadingId);

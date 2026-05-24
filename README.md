@@ -19,7 +19,7 @@ You can experience the interactive platform here:
 - **Dynamic Metrics Engine:** Calculates dependency bloat, theoretical test failures, and execution lag using a mock heuristics engine.
 - **Retro 8-bit UI/UX:** Styled using custom pixel-art assets, a classic gaming font (`VT323`), and a premium Forest/Gold color palette.
 - **Interactive Storyboarding:** Features animated character sprites (like the Audit-X Elf) that react to your codebase's health score.
-- **AI Copilot Integration:** A built-in, context-aware Gemini AI Assistant (`gemini-2.5-flash`) that guides users through the auditing process and provides sarcastic, witty feedback on technical debt.
+- **AI Copilot Integration:** A built-in, context-aware Groq AI Assistant (`llama3-8b-8192`) that guides users through the auditing process and provides sarcastic, witty feedback on technical debt.
 
 ## 📸 Gallery
 
@@ -79,9 +79,10 @@ You can experience the interactive platform here:
    ```
 
 3. **Configure Environment:**
-   Create a `.env` file in the root directory and add your Google Gemini API key to enable the AI Copilot:
-   ```env
-   VITE_GEMINI_API_KEY=your_gemini_api_key_here
+   Create a `.env` file in the root directory and add your Groq API key to enable the AI Copilot:
+
+   ```bash
+   VITE_GROQ_API_KEY=your_groq_api_key_here
    ```
 
 4. **Run the Development Server:**
@@ -99,11 +100,11 @@ You can experience the interactive platform here:
 - **Framework:** Vite + Vanilla JS
 - **Styling:** Custom CSS / Tailwind concepts
 - **Animation:** GSAP (GreenSock) for smooth section reveals and modal interactions.
-- **AI Integration:** Google Gemini API (REST)
+- **AI Integration:** Groq API (REST)
 
 ## 🔒 Security Note
 
-The `.env` file containing the `VITE_GEMINI_API_KEY` is included in the `.gitignore` file. **Never commit your actual API key to a public repository.** The included `.env.example` file provides a safe template for users who clone the project.
+The `.env` file containing the `VITE_GROQ_API_KEY` is included in the `.gitignore` file. **Never commit your actual API key to a public repository.** The included `.env.example` file provides a safe template for users who clone the project.
 
 ---
 *Built with ❤️ and a lot of technical debt.*
