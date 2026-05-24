@@ -19,7 +19,7 @@ You can experience the interactive platform here:
 - **Dynamic Metrics Engine:** Calculates dependency bloat, theoretical test failures, and execution lag using a mock heuristics engine.
 - **Retro 8-bit UI/UX:** Styled using custom pixel-art assets, a classic gaming font (`VT323`), and a premium Forest/Gold color palette.
 - **Interactive Storyboarding:** Features animated character sprites (like the Audit-X Elf) that react to your codebase's health score.
-- **AI Copilot Integration:** A built-in, context-aware Groq AI Assistant (`llama3-8b-8192`) that guides users through the auditing process and provides sarcastic, witty feedback on technical debt.
+- **AI Copilot Integration:** A built-in, context-aware Groq AI Assistant (`llama-3.1-8b-instant`) that guides users through the auditing process and provides sarcastic, witty feedback on technical debt.
 
 ## 📸 Gallery
 

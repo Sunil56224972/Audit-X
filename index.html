@@ -301,7 +301,7 @@ document.addEventListener('DOMContentLoaded', () => {
           'Authorization': `Bearer ${apiKey}`
         },
         body: JSON.stringify({ 
-          model: 'llama3-8b-8192',
+          model: 'llama-3.1-8b-instant',
           messages: groqMessages
         })
       });
@@ -315,7 +315,8 @@ document.addEventListener('DOMContentLoaded', () => {
         chatHistory.push({ role: "model", parts: [{ text: reply }] });
         appendMessage(reply, 'model');
       } else {
-        appendMessage('Error: No response from Groq.', 'model');
+        console.error('Groq API Error:', data);
+        appendMessage('Error: ' + (data.error?.message || 'No response from Groq.'), 'model');
       }
     } catch (err) {
       const loadEl = document.getElementById(loadingId);
