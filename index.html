@@ -289,6 +289,13 @@ document.addEventListener('DOMContentLoaded', () => {
     chatHistory.push({ role: "user", parts: [{ text }] });
 
     try {
+      if (!apiKey || apiKey === 'undefined') {
+        appendMessage('Error: API key is not loaded. If you are running locally, please restart your development server so it picks up the .env file.', 'model');
+        const loadEl = document.getElementById(loadingId);
+        if(loadEl) loadEl.remove();
+        return;
+      }
+
       const groqMessages = [
         { role: 'system', content: systemInstruction.parts[0].text },
         ...chatHistory.map(msg => ({ role: msg.role === 'model' ? 'assistant' : 'user', content: msg.parts[0].text }))
